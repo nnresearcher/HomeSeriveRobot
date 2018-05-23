@@ -24,7 +24,8 @@ int main(int argc, char** argv){
   goal.target_pose.header.stamp = ros::Time::now();
 
   // Define a position and orientation for the robot to reach
-  goal.target_pose.pose.position.x = 1.0;
+  goal.target_pose.pose.position.x = 0.0;
+  goal.target_pose.pose.position.y = -1.6;
   goal.target_pose.pose.orientation.w = 1.0;
 
    // Send the goal position and orientation for the robot to reach
@@ -39,8 +40,8 @@ int main(int argc, char** argv){
     ROS_INFO("Hooray, the base moved 1 meter forward");
     ROS_INFO("Waiting for 5 seconds");
     ros::Duration(5.0).sleep();
-    goal.target_pose.pose.position.x = 1.0;
-    goal.target_pose.pose.position.y = 7.0;
+    goal.target_pose.pose.position.x = 5.5;
+    goal.target_pose.pose.position.y = -2.0;
     goal.target_pose.pose.orientation.w = 1.0;
     goal.target_pose.header.stamp = ros::Time::now();
     ROS_INFO("Sending second goal");
