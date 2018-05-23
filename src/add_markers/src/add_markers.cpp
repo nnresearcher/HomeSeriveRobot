@@ -10,7 +10,6 @@ int main ( int argc, char** argv )
 
   // Set our initial shape type to be a cube
   uint32_t shape = visualization_msgs::Marker::CUBE;
-
   while (ros::ok())
   {
     visualization_msgs::Marker marker;
@@ -31,10 +30,10 @@ int main ( int argc, char** argv )
 
     // Set the pose of the marker.  This is a full 6DOF pose relative to the frame/time specified in the header
     marker.pose.position.x = 0;
-    marker.pose.position.y = 0;
+    marker.pose.position.y = -1.6;
     marker.pose.position.z = 0;
-    marker.pose.orientation.x = 0.0;
-    marker.pose.orientation.y = 0.0;
+    marker.pose.orientation.x = 5.5;
+    marker.pose.orientation.y = -2.0;
     marker.pose.orientation.z = 0.0;
     marker.pose.orientation.w = 1.0;
 
@@ -64,21 +63,7 @@ int main ( int argc, char** argv )
     marker_pub.publish(marker);
 
     // Cycle between different shapes
-    switch (shape)
-    {
-    case visualization_msgs::Marker::CUBE:
-      shape = visualization_msgs::Marker::SPHERE;
-      break;
-    case visualization_msgs::Marker::SPHERE:
-      shape = visualization_msgs::Marker::ARROW;
-      break;
-    case visualization_msgs::Marker::ARROW:
-      shape = visualization_msgs::Marker::CYLINDER;
-      break;
-    case visualization_msgs::Marker::CYLINDER:
-      shape = visualization_msgs::Marker::CUBE;
-      break;
-    }
+    marker.type=visualization_msgs::Marker::CYLINDER;
 
     r.sleep();
   }
