@@ -9,21 +9,21 @@ int main ( int argc, char** argv )
   ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 
   // Set our initial shape type to be a cube
-  uint32_t shape = visualization_msgs::Marker::CUBE;
+  
   while (ros::ok())
   {
     visualization_msgs::Marker marker;
     // Set the frame ID and timestamp.  See the TF tutorials for information on these.
-    marker.header.frame_id = "/my_frame";
+    marker.header.frame_id = "/map";
     marker.header.stamp = ros::Time::now();
 
     // Set the namespace and id for this marker.  This serves to create a unique ID
     // Any marker sent with the same namespace and id will overwrite the old one
     marker.ns = "basic_shapes";
     marker.id = 0;
-
+    marker.type=visualization_msgs::Marker::CYLINDER;
     // Set the marker type.  Initially this is CUBE, and cycles between that and SPHERE, ARROW, and CYLINDER
-    marker.type = shape;
+
 
     // Set the marker action.  Options are ADD, DELETE, and new in ROS Indigo: 3 (DELETEALL)
     marker.action = visualization_msgs::Marker::ADD;
@@ -63,7 +63,7 @@ int main ( int argc, char** argv )
     marker_pub.publish(marker);
 
     // Cycle between different shapes
-    marker.type=visualization_msgs::Marker::CYLINDER;
+    
 
     r.sleep();
   }
