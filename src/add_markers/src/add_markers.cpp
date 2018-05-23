@@ -21,7 +21,8 @@ int main(int argc, char** argv)
     // Any marker sent with the same namespace and id will overwrite the old one
     marker.ns = "add_markersss";
     marker.id = 0;
-    marker.type=visualization_msgs::Marker::CYLINDER;
+    marker.type=visualization_msgs::Marker::CUBE;
+    //marker.type=visualization_msgs::Marker::CYLINDER;
     // Set the marker type.  Initially this is CUBE, and cycles between that and SPHERE, ARROW, and CYLINDER
 
 
@@ -43,9 +44,9 @@ int main(int argc, char** argv)
     marker.scale.z = 0.2;
 
     // Set the color -- be sure to set alpha to something non-zero!
-    marker.color.r = 0.0f;
-    marker.color.g = 1.0f;
-    marker.color.b = 0.0f;
+    marker.color.r = 0.3f;
+    marker.color.g = 0.8f;
+    marker.color.b = 0.6f;
     marker.color.a = 1.0;
 
     marker.lifetime = ros::Duration();
