@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
 
-int main (int argc, char** argv)
+int main(int argc, char** argv)
 {
   ros::init(argc, argv, "add_markers");
   ros::NodeHandle n;
@@ -19,7 +19,7 @@ int main (int argc, char** argv)
 
     // Set the namespace and id for this marker.  This serves to create a unique ID
     // Any marker sent with the same namespace and id will overwrite the old one
-    marker.ns = "add_markers";
+    marker.ns = "add_markersss";
     marker.id = 0;
     marker.type=visualization_msgs::Marker::CYLINDER;
     // Set the marker type.  Initially this is CUBE, and cycles between that and SPHERE, ARROW, and CYLINDER
@@ -32,15 +32,15 @@ int main (int argc, char** argv)
     marker.pose.position.x = 0;
     marker.pose.position.y = -1.6;
     marker.pose.position.z = 0;
-    marker.pose.orientation.x = 5.5;
-    marker.pose.orientation.y = -2.0;
+    marker.pose.orientation.x = 0.0;
+    marker.pose.orientation.y = 0.0;
     marker.pose.orientation.z = 0.0;
     marker.pose.orientation.w = 1.0;
 
     // Set the scale of the marker -- 1x1x1 here means 1m on a side
-    marker.scale.x = 1.0;
-    marker.scale.y = 1.0;
-    marker.scale.z = 1.0;
+    marker.scale.x = 0.2;
+    marker.scale.y = 0.2;
+    marker.scale.z = 0.2;
 
     // Set the color -- be sure to set alpha to something non-zero!
     marker.color.r = 0.0f;
