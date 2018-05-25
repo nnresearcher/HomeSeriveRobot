@@ -21,7 +21,7 @@ int main(int argc, char** argv)
     // Any marker sent with the same namespace and id will overwrite the old one
     marker.ns = "add_markersss";
     marker.id = 0;
-    marker.type=visualization_msgs::Marker::CUBE;
+    marker.type=visualization_msgs::Marker::CYLINDER;
     //marker.type=visualization_msgs::Marker::CYLINDER;
     // Set the marker type.  Initially this is CUBE, and cycles between that and SPHERE, ARROW, and CYLINDER
 
@@ -39,14 +39,14 @@ int main(int argc, char** argv)
     marker.pose.orientation.w = 1.0;
 
     // Set the scale of the marker -- 1x1x1 here means 1m on a side
-    marker.scale.x = 0.2;
-    marker.scale.y = 0.2;
-    marker.scale.z = 0.2;
+    marker.scale.x = 0.3;
+    marker.scale.y = 0.3;
+    marker.scale.z = 0.3;
 
     // Set the color -- be sure to set alpha to something non-zero!
-    marker.color.r = 0.3f;
-    marker.color.g = 0.8f;
-    marker.color.b = 0.6f;
+    marker.color.r = 0.0f;
+    marker.color.g = 1.0f;
+    marker.color.b = 0.0f;
     marker.color.a = 1.0;
 
     marker.lifetime = ros::Duration();
@@ -62,10 +62,18 @@ int main(int argc, char** argv)
       sleep(1);
     }
     marker_pub.publish(marker);
-
     // Cycle between different shapes
-    
-
+    ROS_INFO("Marker is in the first place");
+    ros::Duration(5.0).sleep();
+    marker.action = visualization_msgs::Marker::DELETE;
+    marker_pub.publish(marker);
+    ROS_INFO("Marker has been picked up ");
+    ros::Duration(5.0).sleep();
+    marker.action = visualization_msgs::Marker::ADD;
+    marker.pose.position.x = 5.5;
+    marker.pose.position.y = -2.0;
+    marker_pub.publish(marker);
+    ROS_INFO("Marker is in the second place");
     ros::spin();
     return 0;
   }
